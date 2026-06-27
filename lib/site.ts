@@ -9,7 +9,7 @@ export const SITE_URL =
 
 export const APP_NAME = 'Remember the Neighbor'
 export const APP_TAGLINE = 'Remember who lives where.'
-export const SUPPORT_EMAIL = 'itteamns@gmail.com'
+export const SUPPORT_EMAIL = 'support@trevvy.app'
 
 // App store links — fill these in once the app is live.
 export const APP_STORE_URL = ''
