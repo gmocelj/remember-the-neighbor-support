@@ -23,8 +23,22 @@ Use the **Privacy** and **Support** URLs in App Store Connect and Google Play Co
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # static export to ./out
+npm run typecheck # TypeScript check
+npm run build    # typechecked static export to ./out
 ```
+
+## Content and publication state
+
+The ASO copy prepared on 2 November 2026 describes birthday reminders, local
+storage, user exports, possible system backups and RevenueCat startup checks.
+Premium is a one-time unlock (one free building / 15 residents), not a subscription.
+The app UI is English/Serbian; this site currently has English pages only.
+
+Local edits/builds do not update the public site. Review the generated export
+before publishing; confirm support-mailbox and RevenueCat integration settings
+against the app release. The related app repository has the operational privacy
+runbook and ASO baseline in `docs/specification/10-privacy-and-publishing.md` and
+`docs/product/aso/change-log.md`.
 
 ## Deploy
 

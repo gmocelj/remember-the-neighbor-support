@@ -1,11 +1,69 @@
 import type { Metadata } from 'next'
 import { Header, Footer } from '@/components/chrome'
-import { APP_NAME, SUPPORT_EMAIL, LAST_UPDATED } from '@/lib/site'
+import { APP_NAME, SUPPORT_EMAIL, LAST_UPDATED, SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: `How ${APP_NAME} handles your information. Short version: your data stays on your device.`,
+  description: `How ${APP_NAME} handles local resident data, user exports, system backups and RevenueCat purchase checks.`,
+  alternates: { canonical: `${SITE_URL}/privacy/` },
+  openGraph: {
+    title: `Privacy Policy | ${APP_NAME}`,
+    description: 'Local directory data, backups you control, and purchase-service processing explained.',
+    url: `${SITE_URL}/privacy/`,
+    type: 'website',
+  },
 }
+
+const sections = [
+  {
+    "title": "Overview",
+    "paragraphs": [
+      "Remember the Neighbor is a private directory for remembering who lives where. No account is required. We do not operate a server that receives or synchronizes your resident profiles. The app offers local birthday reminders and an optional one-time Premium Unlock; it does not offer a subscription."
+    ]
+  },
+  {
+    "title": "Your directory, exports and device backups",
+    "paragraphs": [
+      "Buildings, resident names, contact details, relationships, notes, birthdays, app settings and attached photos are stored locally in the app. Importing a contact or adding a photo does not upload your directory to us or to RevenueCat.",
+      "Backup & Restore creates a file containing your directory and photos. You choose where to save or share that file through your device’s sharing options. The destination may be a cloud service or another person. Your operating system may also include app files in a device backup, depending on its settings. Manage those exports and backups through the destination provider or your device settings."
+    ]
+  },
+  {
+    "title": "Device permissions and birthday reminders",
+    "paragraphs": [
+      "Contacts access lets you select a name and phone number to fill an editable resident profile. Camera or photo-library access lets you attach a photo when you choose. These permissions do not send your resident profiles to us.",
+      "Notification permission enables local birthday reminders scheduled on the device. We do not run a remote push-notification service. You can manage these permissions in device settings."
+    ]
+  },
+  {
+    "title": "Premium purchases and RevenueCat",
+    "paragraphs": [
+      "Apple (App Store) or Google (Google Play) processes the purchase. RevenueCat, Inc. supplies purchase validation and Premium access checks. Its SDK communicates when the app starts and during purchase or restore flows, rather than only when you pay.",
+      "RevenueCat can process a generated app-user identifier, purchase history, Premium access status and limited app/device and locale information used to operate the purchase service. The app does not send resident profiles, imported contact details or profile photos to RevenueCat.",
+      "Purchase information is used to provide and restore Premium access and for purchase reporting in RevenueCat. The app has no separate product analytics or crash-reporting SDK, no advertising and no configured cross-app advertising tracking."
+    ]
+  },
+  {
+    "title": "Your choices and deletion",
+    "paragraphs": [
+      "You can delete directory entries in the app and manage permissions in device settings. Uninstalling removes the app’s local files, but does not delete previously exported files, system backups or store purchase records. Manage exports and backups with the destination provider or device settings.",
+      "For a RevenueCat data-deletion request, contact support@trevvy.app. We may need the app’s support identifier, when available in Settings, or a relevant store transaction identifier to locate an anonymous purchase-service record. Do not send your directory, a backup archive, payment-card details or account passwords.",
+      "We will explain what was located and processed, and any separate steps needed with Apple, Google or a backup provider. Deleting a RevenueCat record is not a refund or deletion of store records. Further use of the app’s purchase service may create a new service record."
+    ]
+  },
+  {
+    "title": "Children’s privacy",
+    "paragraphs": [
+      "The app is not directed at children under 13 or the applicable minimum age in your jurisdiction. We do not knowingly collect children’s personal information."
+    ]
+  },
+  {
+    "title": "Changes to this policy",
+    "paragraphs": [
+      "Changes to this policy will be posted here with an updated date. The app interface is available in English and Serbian."
+    ]
+  }
+]
 
 export default function PrivacyPage() {
   return (
@@ -13,146 +71,22 @@ export default function PrivacyPage() {
       <Header />
       <main className="px-5 py-16">
         <article className="prose-legal">
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground">
-            Privacy Policy
-          </h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Last updated: {LAST_UPDATED}
-          </p>
-
-          <h2>Overview</h2>
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground">Privacy Policy</h1>
+          <p className="mt-2 text-sm text-muted-foreground">Last updated: {LAST_UPDATED}</p>
+          {sections.map((section) => (
+            <section key={section.title}>
+              <h2>{section.title}</h2>
+              {section.paragraphs.map((paragraph) => <p className="mt-3" key={paragraph}>{paragraph}</p>)}
+            </section>
+          ))}
+          <h2>Service providers</h2>
           <p>
-            {APP_NAME} (&ldquo;the App&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;)
-            is built to be private by default. The App does not require an
-            account, and the information you create — neighbor profiles, photos,
-            notes, and reminders — is stored locally on your device. We do not
-            operate servers that collect or store this content. This policy
-            explains the few cases where data is processed and by whom.
+            Read <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">RevenueCat’s Privacy Policy</a>,{' '}
+            <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple’s Privacy Policy</a> and{' '}
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s Privacy Policy</a> for their service and store processing.
           </p>
-
-          <h2>Information stored on your device</h2>
-          <p>
-            The following is stored <strong>only on your device</strong> and is
-            never transmitted to us:
-          </p>
-          <ul>
-            <li>Neighbor profiles (names, unit/house numbers, notes)</li>
-            <li>Photos you take or select for a profile</li>
-            <li>Contact details you choose to import</li>
-            <li>Reminders and app settings</li>
-          </ul>
-          <p>
-            If you create a backup file using the in-app Backup &amp; Restore
-            feature, that file is saved to a location you choose and remains
-            under your control.
-          </p>
-
-          <h2>Device permissions</h2>
-          <h3>Contacts</h3>
-          <p>
-            With your permission, the App can read a contact so its name and
-            phone number can pre-fill a new neighbor profile. This happens only
-            when you initiate an import. Contacts are not uploaded, shared, or
-            stored anywhere outside your device.
-          </p>
-          <h3>Camera and Photos</h3>
-          <p>
-            With your permission, the App can use the camera or your photo
-            library so you can attach a photo to a profile. Photos stay on your
-            device.
-          </p>
-          <h3>Notifications and reminders</h3>
-          <p>
-            With your permission, the App schedules local notifications to
-            remind you about things you set up. These reminders are generated on
-            your device and are not sent through our servers.
-          </p>
-
-          <h2>In-app purchases</h2>
-          <p>
-            The App offers optional paid features. Purchases and subscriptions
-            are processed by <strong>Apple</strong> (App Store) or{' '}
-            <strong>Google</strong> (Google Play). To validate purchases and
-            manage entitlements, we use <strong>RevenueCat, Inc.</strong> as our
-            purchase infrastructure provider.
-          </p>
-          <p>
-            For this purpose, RevenueCat may process a randomly generated app
-            user identifier, your purchase history and subscription status, and
-            limited device and country information. RevenueCat does not receive
-            your neighbor data, contacts, or photos. See{' '}
-            <a
-              href="https://www.revenuecat.com/privacy/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              RevenueCat&apos;s Privacy Policy
-            </a>
-            ,{' '}
-            <a
-              href="https://www.apple.com/legal/privacy/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Apple&apos;s Privacy Policy
-            </a>
-            , and{' '}
-            <a
-              href="https://policies.google.com/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Google&apos;s Privacy Policy
-            </a>{' '}
-            for details on how they handle payment data.
-          </p>
-
-          <h2>What we do not do</h2>
-          <ul>
-            <li>We do not sell or rent your personal information.</li>
-            <li>We do not show third-party advertising.</li>
-            <li>
-              We do not use third-party analytics or tracking SDKs to profile
-              you.
-            </li>
-            <li>We do not require you to create an account.</li>
-          </ul>
-
-          <h2>Children&apos;s privacy</h2>
-          <p>
-            The App is not directed to children under 13 (or the minimum age
-            required in your jurisdiction), and we do not knowingly collect
-            personal information from children.
-          </p>
-
-          <h2>Your rights and choices</h2>
-          <p>
-            Because your content lives on your device, you are in control of it:
-          </p>
-          <ul>
-            <li>Delete any profile or photo at any time within the App.</li>
-            <li>
-              Revoke contacts, camera, photo, or notification permissions in
-              your device settings.
-            </li>
-            <li>
-              Uninstalling the App removes all data stored on the device. To
-              manage purchase data held by RevenueCat or the stores, contact us
-              and we will assist with a deletion request.
-            </li>
-          </ul>
-
-          <h2>Changes to this policy</h2>
-          <p>
-            We may update this policy as the App evolves. Material changes will
-            be reflected here with a new &ldquo;Last updated&rdquo; date.
-          </p>
-
           <h2>Contact</h2>
-          <p>
-            Questions about this policy? Email us at{' '}
-            <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
-          </p>
+          <p>Questions about this policy? Email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.</p>
         </article>
       </main>
       <Footer />

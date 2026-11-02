@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     template: `%s | ${APP_NAME}`,
   },
   description:
-    'Remember the Neighbor helps you remember who lives where — names, faces, units, and the little details. Private by design: your data stays on your device.',
+    'A private neighbor directory for names, faces, apartments and birthday reminders. Local storage, no account, and backups you control.',
   keywords: [
     'remember neighbors',
     'neighbor names app',
     'apartment building app',
     'who lives where',
-    'community directory',
+    'private resident directory',
     'private contacts app',
     'iOS Android neighbor app',
   ],
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   creator: APP_NAME,
   publisher: APP_NAME,
   alternates: {
-    canonical: '/',
+    canonical: `${SITE_URL}/`,
   },
   openGraph: {
     type: 'website',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: APP_NAME,
     title: `${APP_NAME} — ${APP_TAGLINE}`,
     description:
-      'Remember who lives where — private by design. Your data stays on your device.',
+      'Remember names, faces and apartments in a private directory. No account; export backups when you choose.',
   },
   robots: {
     index: true,

@@ -11,9 +11,6 @@ const nextConfig = {
   trailingSlash: true,
   basePath: repoBasePath,
   assetPrefix: repoBasePath || undefined,
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
     unoptimized: true,
   },

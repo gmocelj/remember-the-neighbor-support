@@ -1,41 +1,56 @@
 import type { Metadata } from 'next'
 import { Header, Footer } from '@/components/chrome'
-import { APP_NAME, SUPPORT_EMAIL } from '@/lib/site'
+import { APP_NAME, SUPPORT_EMAIL, SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Support',
-  description: `Get help with ${APP_NAME} — frequently asked questions and how to contact us.`,
+  description: `Help with ${APP_NAME}: local backups, birthday reminders, Premium restore and purchase-data deletion.`,
+  alternates: { canonical: `${SITE_URL}/support/` },
+  openGraph: {
+    title: `Support | ${APP_NAME}`,
+    description: 'Answers about the private directory, local backups, birthday reminders and one-time Premium.',
+    url: `${SITE_URL}/support/`,
+    type: 'website',
+  },
 }
 
 const faqs = [
   {
-    q: 'Where is my data stored?',
-    a: 'Everything you add — neighbor profiles, photos, notes, and reminders — is stored locally on your device. We do not run servers that hold your data, and there is no account to sign up for.',
+    "q": "Where is my data stored?",
+    "a": "Your resident profiles, photos, notes, relationships and birthdays are stored locally. There is no account or directory server. You control exported backups; system backups may include app files according to device settings. RevenueCat and the stores process purchase information separately."
   },
   {
-    q: 'Why does the app ask for contacts access?',
-    a: 'Only so you can import a name and phone number to pre-fill a new neighbor profile, and only when you tap to do so. The app never uploads your contacts anywhere — the imported details stay on your device.',
+    "q": "Why does the app ask for contacts access?",
+    "a": "Only when you choose to import a selected name and phone number into an editable resident profile. The app does not upload the imported details to us or RevenueCat. Those details can be included in a backup that you choose to export."
   },
   {
-    q: 'Why does it ask for camera and photo access?',
-    a: 'So you can attach a photo to a neighbor profile, either by taking a new picture or choosing an existing one. Photos remain on your device.',
+    "q": "Why does it ask for camera and photo access?",
+    "a": "So you can attach a photo to a resident profile when you choose. The photo is stored locally and can be included in your exports or system device backups."
   },
   {
-    q: 'How do reminders work?',
-    a: 'Reminders are scheduled locally on your device using the system notification scheduler. They work without an internet connection and nothing is sent to us.',
+    "q": "How do birthday reminders work?",
+    "a": "Add a person’s birthday and allow notifications to receive local birthday reminders. They work without a remote server or internet connection. The app does not schedule general tasks or borrowed-item reminders."
   },
   {
-    q: 'How do I back up or move my data to a new phone?',
-    a: 'Use the in-app Backup & Restore feature to export your data to a file you control, then import that file on your new device.',
+    "q": "How do I back up or move my directory?",
+    "a": "Use Backup & Restore to export your directory and photos to a file, then import it on the other device. You choose how to save or transfer the file. There is no automatic app-managed synchronization; manage system backups separately in device settings."
   },
   {
-    q: 'What do in-app purchases unlock, and how do I restore them?',
-    a: 'Purchases unlock premium features. Billing is handled by Apple or Google; we use RevenueCat to verify entitlements. If you reinstall or switch devices, use “Restore Purchases” in the app to recover what you bought.',
+    "q": "What is free and what does Premium unlock?",
+    "a": "The free version supports one building and up to 15 residents. A single Premium Unlock purchase adds unlimited buildings and residents, with no subscription. The directory works offline. Purchases and restores require internet; RevenueCat checks Premium access at startup and during those flows."
   },
   {
-    q: 'How do I delete my data?',
-    a: 'Because data lives only on your device, deleting a profile removes it, and uninstalling the app removes everything. See the Privacy Policy for details.',
+    "q": "How do I restore Premium?",
+    "a": "Use Restore Purchases on the paywall or in Settings with the same app-store account that made the purchase. Your local directory and exported backups are separate from Premium purchase records."
   },
+  {
+    "q": "How do I delete my data?",
+    "a": "Delete entries in the app and manage exports or system backups separately. Uninstalling removes the app’s local files, not previously exported copies or store purchase records. Email support for a RevenueCat deletion request. Include a support ID from Settings when available, or a relevant store transaction identifier; do not send your directory, backup archive, card details or password."
+  },
+  {
+    "q": "Which languages are available?",
+    "a": "The app interface is available in English and Serbian. This support site is in English."
+  }
 ]
 
 export default function SupportPage() {

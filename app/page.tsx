@@ -8,18 +8,18 @@ import {
   Camera,
 } from 'lucide-react'
 import { Header, Footer } from '@/components/chrome'
-import { APP_NAME, APP_TAGLINE, SUPPORT_EMAIL } from '@/lib/site'
+import { APP_NAME, APP_TAGLINE, APP_STORE_URL, PLAY_STORE_URL, SUPPORT_EMAIL } from '@/lib/site'
 
 const features = [
   {
     icon: Users,
     title: 'A profile for every neighbor',
-    body: 'Name, photo, unit or house number, and any detail you want to remember — all in one tidy place.',
+    body: 'Name, photo, apartment, and any detail you want to remember — all in one tidy place.',
   },
   {
     icon: Building2,
     title: 'Organized by building',
-    body: 'Group residents by floor, building, or street so you always know who lives where.',
+    body: 'Organize residents by building, entrance, floor and apartment so you remember who lives where.',
   },
   {
     icon: Import,
@@ -29,12 +29,12 @@ const features = [
   {
     icon: Camera,
     title: 'Add a photo',
-    body: 'Attach a photo so names and faces finally click. Photos stay on your device.',
+    body: 'Attach a locally stored photo so names and faces finally click. Include it in a backup when you choose.',
   },
   {
     icon: BellRing,
-    title: 'Gentle reminders',
-    body: 'Optional reminders help you follow up — a birthday, a returned tool, a promised hello.',
+    title: 'Birthday reminders',
+    body: 'Add birthdays and enable local notifications to remember a neighbor’s special day, without a push server.',
   },
   {
     icon: ShieldCheck,
@@ -63,9 +63,19 @@ export default function HomePage() {
             feels familiar.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            {APP_STORE_URL && (
+              <a href={APP_STORE_URL} className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90">
+                Download on the App Store
+              </a>
+            )}
+            {PLAY_STORE_URL && (
+              <a href={PLAY_STORE_URL} className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90">
+                Get it on Google Play
+              </a>
+            )}
             <Link
               href="/support/"
-              className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
+              className="rounded-lg border border-border bg-card px-6 py-3 font-semibold transition hover:bg-muted"
             >
               Get Support
             </Link>
@@ -77,7 +87,7 @@ export default function HomePage() {
             </Link>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            Coming soon to the App Store and Google Play.
+            Built for iOS and Android. The interface is available in English and Serbian.
           </p>
         </section>
 
@@ -85,7 +95,7 @@ export default function HomePage() {
         <section className="border-t border-border bg-muted/40">
           <div className="mx-auto max-w-5xl px-5 py-16">
             <h2 className="text-center text-3xl font-bold">
-              Everything you need, nothing you don&apos;t
+              Remember names, faces and apartments
             </h2>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {features.map((f) => (
@@ -102,6 +112,21 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+        </section>
+
+        <section className="mx-auto max-w-5xl px-5 py-16 text-center">
+          <h2 className="text-3xl font-bold">Start with your own building</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            Free for one building and up to 15 residents. A one-time Premium Unlock
+            adds unlimited buildings and residents, with no subscription.
+            Your local directory works offline; purchases and restores need internet.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground">
+            Export a backup through your device’s sharing options when you choose.
+            System backups may also include app data according to your settings.
+            RevenueCat checks Premium access at startup and handles purchases and
+            restores with the stores; it does not receive your resident profiles.
+          </p>
         </section>
 
         {/* Support teaser */}

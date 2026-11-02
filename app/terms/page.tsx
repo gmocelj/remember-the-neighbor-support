@@ -1,10 +1,17 @@
 import type { Metadata } from 'next'
 import { Header, Footer } from '@/components/chrome'
-import { APP_NAME, SUPPORT_EMAIL, LAST_UPDATED } from '@/lib/site'
+import { APP_NAME, SUPPORT_EMAIL, LAST_UPDATED, SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Terms of Use',
-  description: `The terms that govern your use of ${APP_NAME}.`,
+  description: `Terms for ${APP_NAME}, including your directory, backups and one-time Premium purchase.`,
+  alternates: { canonical: `${SITE_URL}/terms/` },
+  openGraph: {
+    title: `Terms of Use | ${APP_NAME}`,
+    description: 'Terms for the private resident directory and one-time Premium Unlock.',
+    url: `${SITE_URL}/terms/`,
+    type: 'website',
+  },
 }
 
 export default function TermsPage() {
@@ -41,16 +48,21 @@ export default function TermsPage() {
             including details about other people. You agree to use the App in
             compliance with applicable laws, including privacy laws, and to
             obtain any consent required before recording information about
-            others. You are responsible for maintaining your own backups of your
-            data.
+            others. You choose where exported backups are stored or shared and
+            are responsible for those copies. System device backups may also
+            contain app data according to your settings. We do not provide a
+            directory server or automatic app-managed synchronization.
           </p>
 
           <h2>In-app purchases</h2>
           <p>
-            The App may offer paid features or subscriptions. Payments,
-            renewals, and refunds are handled by the App Store or Google Play
-            under their terms. Subscriptions renew automatically unless canceled
-            through your store account.
+            The free version allows one building and up to 15 residents.
+            Premium Unlock is a single non-consumable purchase that removes those
+            limits. There is no subscription or automatic renewal. Purchases and
+            refunds are handled by the App Store or Google Play under their terms.
+            Purchase and restore need internet; RevenueCat checks Premium access
+            at startup and during those flows. Restore Purchases is available on
+            the paywall and in Settings.
           </p>
 
           <h2>Disclaimer of warranties</h2>

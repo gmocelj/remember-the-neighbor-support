@@ -5,14 +5,14 @@ import { APP_NAME, SUPPORT_EMAIL } from '@/lib/site'
 export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
+      <div className="mx-auto flex min-h-16 max-w-5xl flex-col items-start justify-center gap-3 px-5 py-3 sm:flex-row sm:items-center sm:justify-between">
         <Link href="/" className="flex items-center gap-2 font-bold">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             <Building2 size={18} />
           </span>
           <span>{APP_NAME}</span>
         </Link>
-        <nav className="flex items-center gap-5 text-sm text-muted-foreground">
+        <nav aria-label="Main navigation" className="flex flex-wrap items-center gap-5 text-sm text-muted-foreground">
           <Link href="/support/" className="hover:text-foreground">
             Support
           </Link>
